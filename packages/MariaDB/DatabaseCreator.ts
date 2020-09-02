@@ -1,15 +1,3 @@
-/*
-DROP USER IF EXISTS 'MYSQL_USER';
-CREATE USER 'MYSQL_USER'@'%';
-CREATE DATABASE IF NOT EXISTS MYSQL_DATABASE;
-GRANT ALL ON MYSQL_DATABASE.* TO 'MYSQL_USER'@'%' IDENTIFIED BY 'MYSQL_PASSWORD';
- --------------your new NewDB----------------------
-CREATE DATABASE IF NOT EXISTS NewDB;
-GRANT ALL ON NewDB.* TO 'MYSQL_USER'@'%' IDENTIFIED BY 'MYSQL_PASSWORD';
-
-*/
-//CREATE USER IF NOT EXISTS 'user'@'%' IDENTIFIED BY 'password';
-
 import { DefinitionsConfig } from 'enxame';
 
 export interface UserPasswordDatabase {
