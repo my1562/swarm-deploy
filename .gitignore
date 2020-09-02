@@ -1,0 +1,4 @@
+*.compose
+*.env
+.env
+node_modules
