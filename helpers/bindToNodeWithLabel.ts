@@ -1,4 +1,4 @@
-import { DefinitionsService } from 'enxame';
+import { DefinitionsService } from '@typeswarm/cli';
 import immer from 'immer';
 
 export const bindToNodeWithLabel = (label: string) => (

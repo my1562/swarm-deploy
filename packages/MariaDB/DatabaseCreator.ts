@@ -1,4 +1,4 @@
-import { DefinitionsConfig } from 'enxame';
+import { DefinitionsConfig } from '@typeswarm/cli';
 
 export interface UserPasswordDatabase {
     user: string;

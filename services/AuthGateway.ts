@@ -1,4 +1,4 @@
-import { DefinitionsService } from 'enxame';
+import { DefinitionsService } from '@typeswarm/cli';
 import md5 from 'md5';
 
 export interface AuthGatewayOptions {

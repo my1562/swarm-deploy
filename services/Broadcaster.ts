@@ -1,4 +1,4 @@
-import { DefinitionsService } from 'enxame';
+import { DefinitionsService } from '@typeswarm/cli';
 
 export interface BroadcasterOptions {
     tag: string;

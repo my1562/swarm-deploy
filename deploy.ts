@@ -1,5 +1,7 @@
-import { config as dotenvConfig } from 'dotenv';
-import { ComposeSpecification, mergeComposeConfigurations } from 'enxame';
+import {
+    ComposeSpecification,
+    mergeComposeConfigurations,
+} from '@typeswarm/cli';
 import { bindToNodeWithLabel } from './helpers/bindToNodeWithLabel';
 import { extend } from './helpers/extend';
 import { MariaDBPackage } from './packages/MariaDB/MariaDBPackage';
@@ -11,14 +13,8 @@ import { FTS } from './services/FTS';
 import { PHPMyAdmin } from './services/PHPMyAdmin';
 import { Redis } from './services/Redis';
 import { AuthGateway } from './services/AuthGateway';
-import { publishToWorld } from './helpers/publishToWorld';
 import { ok } from 'assert';
-
-const env = process.env.ENV;
-if (env !== 'dev' && env !== 'prod') {
-    throw new Error('ENV');
-}
-dotenvConfig({ path: `.${env}.env` });
+import { publishToTraefik } from '@typeswarm/traefik';
 
 const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
 ok(TELEGRAM_TOKEN);
@@ -148,11 +144,12 @@ if (process.env.ENABLE_GATEWAY) {
             upstream: `http://${serviceName.phpmyadmin}`,
         })
     ).withPlugin(
-        publishToWorld({
+        publishToTraefik({
+            externalNetwork: 'shared_proxy',
+            externalHttps: true,
+            serviceName: serviceName.gateway,
             host: PHPMYADMIN_EXTERNAL_HOST,
             port: 4180,
-            proto: 'http',
-            proxyNetwork: 'shared_proxy',
         })
     );
 

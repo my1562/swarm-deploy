@@ -4,8 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build:dev": "ENV=dev enxame render -c deploy.ts -o dev.compose",
-        "build:prod": "ENV=prod enxame render -c deploy.ts -o prod.compose",
+        "build:dev": "typeswarm -e .dev.env render -c deploy.ts -o dev.compose",
+        "build:prod": "typeswarm render -e .prod.env -c deploy.ts -o prod.compose",
         "deploy:dev": "npm run build:dev && docker --context=virtual-cluster stack deploy -c dev.compose/docker-compose.yaml my1562dev --with-registry-auth",
         "deploy:prod": "npm run build:prod && docker --context=pluto stack deploy -c prod.compose/docker-compose.yaml my1562staging --with-registry-auth"
     },
@@ -23,7 +23,8 @@
         "@types/lodash": "^4.14.161",
         "@types/md5": "^2.2.0",
         "@types/node": "^14.6.2",
-        "dotenv": "^8.2.0",
+        "@typeswarm/cli": "0.0.15",
+        "@typeswarm/traefik": "0.0.2",
         "enxame": "0.0.10",
         "immer": "^7.0.8",
         "lodash": "^4.17.20",

@@ -1,4 +1,4 @@
-import { ComposeSpecification, DefinitionsConfig } from 'enxame';
+import { ComposeSpecification, DefinitionsConfig } from '@typeswarm/cli';
 import { MariaDBOptions, MariaDB } from './MariaDB';
 import { DatabaseCreatorOptions, DatabaseCreator } from './DatabaseCreator';
 
